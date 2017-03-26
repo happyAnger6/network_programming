@@ -4,7 +4,7 @@ import os
 import ctypes
 import struct
 
-from if_tun import IfReq, TUNSETIFF, IFF_TUN
+from if_tun import IfReq, TUNSETIFF, IFF_TUN, IFF_TAP
 
 def tun_create(devname, flags):
 	fd = -1
@@ -27,7 +27,7 @@ def tun_create(devname, flags):
 	return fd
 
 if __name__ == "__main__":
-	fd = tun_create("tun3", IFF_TUN)
+	fd = tun_create("tap1", IFF_TAP)
 	if fd < 0:
 		raise OSError
 
