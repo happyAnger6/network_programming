@@ -5,6 +5,8 @@ TUNSETIFF=ioctl_def._IOW(ord('T'), 202, ctypes.c_int)
 IFF_TUN=1
 IFF_TAP=2
 
+IFF_NO_PI=0x1000
+
 IFNAMSIZ=16
 
 class SockAddr(ctypes.Structure):
