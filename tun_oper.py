@@ -1,5 +1,6 @@
 import fcntl
 import os
+import sys
 
 import ctypes
 import struct
@@ -27,7 +28,11 @@ def tun_create(devname, flags):
 	return fd
 
 if __name__ == "__main__":
-	fd = tun_create("tap1", IFF_TAP)
+	if len(sys.argv) != 2:
+		print("usage: <tap_name>")
+		sys.exit(-1)
+	print(sys.argv[1])	
+	fd = tun_create(sys.argv[1], IFF_TAP)
 	if fd < 0:
 		raise OSError
 
